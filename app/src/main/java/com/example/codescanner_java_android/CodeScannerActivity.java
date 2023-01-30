@@ -1,6 +1,7 @@
 package com.example.codescanner_java_android;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
@@ -39,6 +40,9 @@ public class CodeScannerActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        Intent intent = new Intent(CodeScannerActivity.this, MainActivity.class);
+                        intent.putExtra("mensaje", result.getText());
+                        startActivity(intent);
                         Toast.makeText(CodeScannerActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -51,7 +55,6 @@ public class CodeScannerActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     protected void onResume() {
         super.onResume();
